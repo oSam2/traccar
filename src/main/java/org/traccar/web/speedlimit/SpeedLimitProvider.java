@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.traccar.speedlimit;
+package org.traccar.web.speedlimit;
 
 public interface SpeedLimitProvider {
 

@@ -1,0 +1,47 @@
+version: '3'
+
+networks:
+  app-tier-traccar:
+    driver: bridge
+
+services:
+  db:
+    container_name: traccar-db
+    image: "postgres"
+    restart: unless-stopped
+    ports:
+      - 6543:5432
+    volumes:
+      - ./traccardb:/var/lib/postgresql
+    environment:
+      POSTGRES_DB: traccar
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 5c8S69q
+    hostname: psqldb
+  cache:
+    image: "redis"
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+  app: 
+    # image: traccar/traccar:latest
+    container_name: traccar
+    build: .
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:6543/traccar
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: 5c8S69q
+      REDIS_HOST: cache
+      REDIS_PORT: 6379
+    networks:
+      - app-tier-traccar
+    ports:
+      - "5000-5150:5000-5150"
+      - "5000-5150:5000-5150/udp"
+      - "8082:8082"
+    hostname: app
+    depends_on:
+      - db
+      - cache

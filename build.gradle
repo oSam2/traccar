@@ -86,6 +86,8 @@ dependencies {
     implementation ("com.google.firebase:firebase-admin:9.0.0") {
         exclude group: 'com.google.cloud', module: 'google-cloud-firestore'
     }
+    // https://mvnrepository.com/artifact/io.lettuce/lettuce-core
+    implementation group: 'io.lettuce', name: 'lettuce-core', version: '6.2.1.RELEASE'
     testImplementation "junit:junit:4.13.2"
     testImplementation "org.mockito:mockito-core:4.+"
 }

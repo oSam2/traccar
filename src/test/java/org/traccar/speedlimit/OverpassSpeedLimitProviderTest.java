@@ -2,6 +2,8 @@ package org.traccar.speedlimit;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.traccar.web.speedlimit.OverpassSpeedLimitProvider;
+import org.traccar.web.speedlimit.SpeedLimitProvider;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;

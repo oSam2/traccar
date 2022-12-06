@@ -21,7 +21,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.traccar.model.Position;
-import org.traccar.speedlimit.SpeedLimitProvider;
+import org.traccar.web.speedlimit.SpeedLimitProvider;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
